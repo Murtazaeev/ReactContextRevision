@@ -1,9 +1,17 @@
 import React, { Component, createContext } from 'react';
 
-const ThemeContext = createContext();
+export const ThemeContext = createContext();
 
-class ThemeProvider extends Component {
+export class ThemeProvider extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { isDarkMode: true };
+	}
 	render() {
-		<ThemeContext.Provider>{this.props.children}</ThemeContext.Provider>;
+		return (
+			<ThemeContext.Provider value={{ ...this.state, tastesLikeChiken: true }}>
+				{this.props.children}
+			</ThemeContext.Provider>
+		);
 	}
 }

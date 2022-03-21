@@ -2,7 +2,7 @@ import React, { Component, createContext } from 'react';
 
 export const LanguageContext = createContext();
 
-class LanguageProvider extends Component {
+export class LanguageProvider extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -24,4 +24,6 @@ class LanguageProvider extends Component {
 	}
 }
 
-export default LanguageContext;
+export const withLanguagContent = (Component) => (props) => (
+	<LanguageContext.Consumer>{(value) => <Component LanguageContext={value} {...props} />}</LanguageContext.Consumer>
+);
